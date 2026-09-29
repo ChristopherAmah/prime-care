@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import logoImg from "@/imports/prime_logo_main.jpeg";
 import siennaImg from "@/imports/sienna_home.png";
+import heroImg from "@/imports/hero.png";
 import ceoImg from "@/imports/stella_ceo_image.png";
 
 /* ── Icons ── */
@@ -218,8 +219,8 @@ function Hero() {
               <span className="dot-live" />Serving Houston, TX
             </span>
             <img
-              src="https://images.unsplash.com/photo-1675179190914-924be47b35ae?w=900&h=600&fit=crop&auto=format"
-              alt="PrimeCare driver assisting a passenger near an accessible van"
+              src={heroImg}
+              alt="PrimeCare Medical Transportation branded van"
             />
             <div className="hero-photo-caption">
               <strong>Door-to-door care, every ride</strong>
@@ -613,22 +614,34 @@ function CeoWords() {
 
           <div className="ceo-content reveal-right">
             <span className="eyebrow eyebrow-light">A Message from Our CEO</span>
-            <div className="open-quote">"</div>
+            <h2 className="text-white">Turning My Pain Into Purpose</h2>
             <div className="ceo-letter">
               <p>
-                <strong>Dear valued clients and community,</strong>
+                I am dedicating this journey to the memory of my late parents, whose lives and experiences inspired the purpose behind this project.
               </p>
               <p>
-                I started PrimeCare Medical Transport with a very personal understanding of what it means to need a ride to a medical appointment and not have one you can count on. I saw friends and family members miss critical care — not because they didn't want to go, but because getting there felt impossible.
+                My father was diligent about his routine doctor’s appointments and regular checkups. Each time he had an appointment, I would have to take time away from work to take him to and from the hospital. I did it with love, but I also understood how challenging it could be to balance work, family responsibilities, and the need to ensure that a loved one received the care they needed.
               </p>
               <p>
-                That drove me to build something different. Not just a transportation company, but a team of people who genuinely care about the passengers in their vehicles. Every driver we hire isn't just trained in safe driving — they're trained in compassion, patience, and human dignity.
+                My mother’s journey was different. After she was diagnosed with kidney disease and began dialysis, transportation became an even greater challenge. Although I was already living in the United States, I never stopped doing my best to fulfill my responsibilities as her daughter. I had to arrange and pay out of pocket for transportation to take her to and from the hospital for her dialysis treatments.
               </p>
               <p>
-                When you choose PrimeCare, you're choosing a team that takes your health journey personally. We don't see you as a pickup — we see you as a neighbor, a family member, someone who deserves to get where they're going safely and with their head held high.
+                Those experiences were painful, but they also opened my eyes to a need that many families face every day.
               </p>
               <p>
-                <strong>Thank you for trusting us with your care. We will never take that lightly.</strong>
+                Today, I have chosen to turn that pain into purpose.
+              </p>
+              <p>
+                I am grateful to live in a country with resources, structure, and support systems that can make a difference in people’s lives. Through this project, I want to provide dependable, compassionate, and safe transportation for individuals who need assistance getting to their medical appointments and healthcare services.
+              </p>
+              <p>
+                What once caused me worry and hardship has now become an opportunity to serve others.
+              </p>
+              <p>
+                This work is more than a business to me. It is personal. It is a way of honoring my parents and keeping their memory alive through service.
+              </p>
+              <p>
+                Helping others is a blessing and turning my pain into purpose is one of the greatest ways I can honor the lives of my parents.
               </p>
             </div>
             <div className="ceo-signature">
