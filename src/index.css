@@ -1,0 +1,200 @@
+@import "tailwindcss" source(none);
+@source "./App.jsx";
+
+@theme {
+  --color-navy: #0b2a54;
+  --color-navy-deep: #071c3c;
+  --color-brand: #5fb130;
+  --color-sand: #f7f5f0;
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+}
+
+@layer base {
+  :root { --navy: #0b2a54; --green-pale: #edf6e7; --green: #5fb130; }
+  html { @apply scroll-smooth; scroll-padding-top: 110px; }
+  body { @apply m-0 bg-sand font-sans text-slate-700 antialiased; }
+  h1, h2, h3, h4, h5 { @apply font-heading font-bold tracking-tight; }
+  h2 { @apply text-3xl leading-tight text-navy md:text-4xl; }
+  h3 { @apply text-xl leading-snug; }
+  p { @apply leading-relaxed; }
+  button, a, input { -webkit-tap-highlight-color: transparent; }
+  button { @apply cursor-pointer; }
+  a, button, input { @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand; }
+  svg { @apply size-5 shrink-0; }
+  img { @apply max-w-full; }
+  [hidden] { display: none !important; }
+}
+
+@layer components {
+  .wrap, .topbar-inner, .nav-inner, .hero-body, .hero-stats-inner { @apply mx-auto w-full max-w-7xl px-6 lg:px-10; }
+  .section { @apply py-16 md:py-24; }
+  .section-alt { @apply bg-white; }
+  .section-head { @apply mb-10; }
+  .section-head p { @apply mt-5 max-w-3xl text-slate-500; }
+  .center { @apply text-center; }
+  .center p { @apply mx-auto; }
+  .eyebrow { @apply mb-4 block text-xs font-bold uppercase tracking-[0.18em] text-brand; }
+  .eyebrow-light { @apply text-lime-300; }
+  .head-row, .testi-header { @apply flex flex-wrap items-center justify-between gap-6; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg border border-transparent px-6 py-3.5 text-sm font-semibold transition hover:-translate-y-0.5; }
+  .btn-primary { @apply bg-brand text-white hover:bg-green-700; }
+  .btn-outline-navy { @apply border-navy text-navy hover:bg-navy hover:text-white; }
+  .btn-outline-white, .btn-ghost { @apply border-white/40 text-white hover:bg-white/10; }
+  .btn-sm { @apply px-4 py-2.5 text-xs; }
+  .btn-icon { @apply inline-flex size-4; }
+  .btn-icon svg { @apply size-full; }
+  .btns, .hero-ctas, .who-ctas { @apply flex flex-wrap gap-3; }
+  .topbar { @apply bg-navy-deep py-2 text-xs text-blue-100; }
+  .topbar-inner { @apply flex flex-wrap justify-between gap-2; }
+  .pipe { @apply mx-3 opacity-40; }
+  .site-header { @apply sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur; }
+  .site-header.scrolled { @apply shadow-md; }
+  .nav-inner { @apply flex min-h-24 items-center justify-between gap-5; }
+  .brand-logo-img { @apply h-20 w-40 object-contain; }
+  .main-links { @apply hidden items-center gap-6 text-sm font-semibold text-navy xl:flex; }
+  .main-links a { @apply hover:text-brand; }
+  .nav-ctas { @apply ml-auto hidden gap-3 md:flex; }
+  .menu-toggle { @apply p-2 text-navy xl:hidden; }
+  .mobile-nav { @apply border-t border-slate-100 px-6 py-5 xl:hidden; }
+  .mobile-nav > a { @apply block py-3 font-medium text-navy; }
+  .hero { @apply relative isolate overflow-hidden bg-navy-deep text-white; }
+  .hero-bg { @apply absolute inset-0 -z-10; }
+  .hero-bg img { @apply size-full object-cover opacity-20; }
+  .hero-bg::after { content: ''; @apply absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/70 to-transparent; }
+  .hero-body { @apply grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24; }
+  .hero-badge { @apply mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs; }
+  .hero h1 { @apply text-4xl leading-[1.12] sm:text-5xl lg:text-6xl; }
+  .hero h1 em { @apply not-italic text-lime-300; }
+  .hero-sub { @apply my-6 max-w-xl text-base text-blue-100; }
+  .hero-trust { @apply mt-8 flex flex-wrap gap-x-5 gap-y-3 text-xs text-blue-100; }
+  .hero-trust > span { @apply flex items-center gap-2; }
+  .hero-trust svg { @apply size-4 text-lime-300; }
+  .hero-visual { @apply relative pb-14; }
+  .hero-photo-card { @apply relative overflow-hidden rounded-2xl border border-white/20 shadow-2xl; }
+  .hero-photo-card > img { @apply h-80 w-full object-cover lg:h-96; }
+  .hero-photo-label { @apply absolute left-4 top-4 flex items-center gap-2 rounded-full bg-navy/90 px-4 py-2 text-xs; }
+  .dot-live, .dot { @apply inline-block size-2 shrink-0 rounded-full bg-brand; }
+  .hero-photo-caption { @apply absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-deep to-transparent px-6 pb-6 pt-12; }
+  .hero-photo-caption strong, .hero-photo-caption span { @apply block; }
+  .hero-photo-caption span { @apply mt-1 text-xs text-blue-100; }
+  .hero-quick-card { @apply absolute -bottom-2 right-3 rounded-xl border border-white/20 bg-white/95 p-5 text-navy shadow-xl backdrop-blur sm:right-6; }
+  .qc-label { @apply mb-3 text-xs font-bold uppercase tracking-widest text-brand; }
+  .qc-row { @apply mt-2 flex items-center gap-3 text-xs; }
+  .qc-row svg { @apply size-4 text-brand; }
+  .hero-stats-strip { @apply border-y border-white/15 bg-white/5; }
+  .hero-stats-inner { @apply grid grid-cols-2 gap-8 py-8 md:grid-cols-4; }
+  .hero-stat { @apply text-center; }
+  .snum { @apply font-heading text-3xl font-bold text-lime-300 md:text-4xl; }
+  .slabel { @apply mt-2 text-xs text-blue-100; }
+  .hero-ticker { @apply overflow-hidden bg-brand py-4; }
+  .ticker-track { @apply flex w-max gap-8 text-xs font-semibold uppercase tracking-wider; animation: ticker 45s linear infinite; }
+  .ticker-track > span { @apply flex items-center gap-8; }
+  .ticker-track .dot { @apply bg-white/60; }
+  .who-grid, .about-grid, .ceo-inner { @apply grid items-center gap-12 lg:grid-cols-2 lg:gap-20; }
+  .who-photo-wrap, .ceo-photo-wrap { @apply relative pb-6; }
+  .who-photo, .ceo-photo { @apply overflow-hidden rounded-2xl; }
+  .who-photo img { @apply h-96 w-full object-cover; }
+  .who-chip { @apply absolute bottom-0 right-4 flex items-center gap-4 rounded-xl bg-white p-5 shadow-xl; }
+  .chip-icon, .val-icon, .ceo-plate-icon { @apply flex size-12 shrink-0 items-center justify-center rounded-xl bg-lime-100 text-brand; }
+  .chip-num { @apply text-2xl font-bold text-navy; }
+  .chip-label { @apply text-xs; }
+  .who-tabs { @apply mb-5 flex gap-2 border-b border-slate-200; }
+  .who-tab { @apply border-b-2 border-transparent px-5 py-3 text-sm font-bold text-slate-400; }
+  .who-tab.active { @apply border-brand text-navy; }
+  .who-slide { @apply mb-6 min-h-28 transition-opacity; }
+  .about-grid p { @apply mt-5 text-sm; }
+  .about-badges { @apply mt-6 grid gap-3 sm:grid-cols-2; }
+  .about-badge { @apply flex items-center gap-2 text-xs font-semibold text-navy; }
+  .about-badge svg { @apply text-brand; }
+  .about-photos { @apply grid grid-cols-2 gap-4; }
+  .ap-main { @apply col-span-2; }
+  .about-photos img { @apply h-44 w-full rounded-xl object-cover; }
+  .ap-main img { @apply h-64; }
+  .services-grid { @apply grid gap-6 sm:grid-cols-2 xl:grid-cols-4; }
+  .svc-card, .insight-card { @apply overflow-hidden rounded-xl border border-slate-200 bg-white transition-shadow hover:shadow-lg; }
+  .svc-pic, .insight-pic { @apply relative overflow-hidden; }
+  .svc-pic img, .insight-pic img { @apply h-48 w-full object-cover; }
+  .svc-num { @apply absolute left-3 top-3 rounded-md bg-white px-2.5 py-1 text-sm font-bold text-navy; }
+  .svc-body, .insight-body { @apply p-6; }
+  .svc-body h3 { @apply text-lg text-navy; }
+  .svc-body p, .insight-body p { @apply mt-3 text-sm text-slate-500; }
+  .values-grid { @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-4; }
+  .val-card { @apply rounded-xl border border-slate-200 bg-sand p-7; }
+  .val-card h3 { @apply mb-3 mt-5 text-navy; }
+  .val-card p { @apply text-sm text-slate-500; }
+  .cta-banner, .footer-cta { @apply bg-navy py-16 text-white md:py-20; }
+  .cta-banner-inner, .footer-cta-inner { @apply max-w-4xl text-center; }
+  .cta-banner h2, .footer-cta h2 { @apply text-white; }
+  .cta-banner p, .footer-cta p { @apply my-6 text-blue-100; }
+  .cta-banner .btns, .footer-cta .btns { @apply justify-center; }
+  .testi-header { @apply mb-10; }
+  .rating-pill { @apply flex items-center gap-4 rounded-xl border border-slate-200 bg-white px-5 py-3; }
+  .stars, .testi-stars { @apply tracking-wider text-amber-500; }
+  .score { @apply text-xl font-bold text-navy; }
+  .source { @apply text-xs text-slate-500; }
+  .testi-grid, .insights-grid { @apply grid gap-6 md:grid-cols-3; }
+  .testi-card { @apply flex flex-col rounded-xl border border-slate-200 bg-white p-7; }
+  .testi-quote { @apply my-5 flex-1 text-sm; }
+  .testi-author { @apply flex items-center gap-3; }
+  .testi-avatar { @apply flex size-10 items-center justify-center rounded-full bg-blue-50 text-xs font-bold text-navy; }
+  .testi-author b { @apply block text-sm text-navy; }
+  .testi-author span { @apply block text-xs text-slate-500; }
+  .insight-tag { @apply absolute bottom-3 left-3 rounded-md bg-white px-3 py-1 text-xs font-semibold text-navy; }
+  .insight-body h3 { @apply text-navy; }
+  .insight-link { @apply mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand; }
+  .faq-grid { @apply grid items-start gap-10 lg:grid-cols-[1.4fr_1fr]; }
+  .faq-item { @apply border-b border-slate-200; }
+  .faq-q { @apply flex w-full items-center justify-between gap-5 py-5 text-left text-sm font-semibold text-navy; }
+  .faq-q svg { @apply transition-transform; }
+  .faq-q.open svg { @apply rotate-45 text-brand; }
+  .faq-a { @apply pb-5 text-sm leading-relaxed; }
+  .faq-cta-box { @apply rounded-2xl bg-navy p-6 text-white sm:p-8; }
+  .faq-cta-box > p { @apply my-5 text-sm text-blue-100; }
+  .contact-rows { @apply space-y-4; }
+  .contact-row, .contact-item { @apply flex items-center gap-3 text-sm; }
+  .faq-hours { @apply mt-6 border-t border-white/20 pt-5 text-sm leading-7 text-blue-100; }
+  .faq-hours b { @apply mb-2 block text-white; }
+  .ceo-section { @apply bg-navy-deep py-20 text-blue-100; }
+  .ceo-photo img { @apply max-h-[560px] w-full object-cover object-top; }
+  .ceo-name-plate { @apply absolute inset-x-4 bottom-0 flex items-center gap-3 rounded-xl bg-white p-4 text-navy shadow-lg; }
+  .ceo-plate-name { @apply font-bold; }
+  .ceo-plate-title, .ceo-sig-title { @apply mt-1 text-xs; }
+  .open-quote { @apply h-14 font-serif text-8xl text-brand; }
+  .ceo-letter p { @apply mt-4 text-sm; }
+  .ceo-letter strong { @apply text-white; }
+  .ceo-signature { @apply mt-7; }
+  .ceo-sig-name { @apply font-serif text-3xl italic text-white; }
+  .ceo-sig-divider { @apply my-5 h-px bg-white/20; }
+  .ceo-values-list { @apply flex flex-wrap gap-5 text-xs; }
+  .ceo-values-list span { @apply flex items-center gap-2; }
+  .ceo-values-list svg { @apply size-4 text-brand; }
+  .newsletter-band { @apply bg-green-50 py-12; }
+  .newsletter-inner { @apply flex flex-col justify-between gap-6 lg:flex-row lg:items-center; }
+  .newsletter-inner h3 { @apply text-navy; }
+  .newsletter-inner p { @apply mt-3 max-w-xl text-sm; }
+  .newsletter-form { @apply flex flex-col gap-3 sm:flex-row; }
+  .newsletter-form input { @apply min-w-0 rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm; }
+  footer { @apply bg-navy-deep pb-24 pt-14 text-blue-100 md:pb-8; }
+  .footer-inner { @apply grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_0.8fr_1.4fr]; }
+  .footer-logo { @apply mb-5 h-24 w-44 rounded-lg bg-white object-contain; }
+  .footer-brand p { @apply max-w-xs text-sm; }
+  .footer-col h5 { @apply mb-5 text-base text-white; }
+  .footer-col > a { @apply mb-3 block text-sm hover:text-lime-300; }
+  .contact-item { @apply mb-4 break-words text-xs; }
+  .contact-item a { overflow-wrap: anywhere; }
+  .footer-bottom { @apply mt-12 flex flex-wrap items-center justify-between gap-5 border-t border-white/15 pt-6 text-xs; }
+  .footer-bottom-links, .socials { @apply flex gap-4; }
+  .socials a { @apply rounded-full border border-white/20 p-2; }
+  .whatsapp-fab { @apply fixed bottom-20 right-5 z-50 flex items-center gap-2 rounded-full bg-[#25d366] p-4 text-white shadow-xl md:bottom-6; }
+  .whatsapp-fab-icon { @apply flex; }
+  .whatsapp-fab-label { @apply hidden text-sm font-semibold sm:block; }
+  .mobile-cta-bar { @apply fixed inset-x-0 bottom-0 z-40 bg-brand p-4 text-center text-sm font-semibold text-white md:hidden; padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+  .mobile-cta-bar a { @apply flex items-center justify-center gap-2; }
+}
+
+@keyframes ticker { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
