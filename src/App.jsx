@@ -79,13 +79,33 @@ const TICKER_ITEMS = ["Medical Appointments","Dialysis Transportation","Wheelcha
 
 function useReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
-    const obs = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in-view"); }),
-      { threshold: 0.08 }
-    );
-    els.forEach((el) => obs.observe(el));
-    return () => obs.disconnect();
+    const els = document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-top, .reveal-bottom");
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (motion.matches || !('IntersectionObserver' in window)) return;
+
+    // Each element enters once. Content stays visible if motion is unavailable.
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(({ isIntersecting, target }) => {
+        if (!isIntersecting) return;
+        target.classList.add('in-view');
+        obs.unobserve(target);
+      });
+    }, { threshold: 0.08 });
+    els.forEach((el) => {
+      el.classList.add('motion-ready');
+      obs.observe(el);
+    });
+    const showAll = () => {
+      if (!motion.matches) return;
+      obs.disconnect();
+      els.forEach((el) => el.classList.remove('motion-ready', 'in-view'));
+    };
+    motion.addEventListener('change', showAll);
+    return () => {
+      obs.disconnect();
+      motion.removeEventListener('change', showAll);
+      els.forEach((el) => el.classList.remove('motion-ready', 'in-view'));
+    };
   }, []);
 }
 
@@ -192,30 +212,30 @@ function Hero() {
 
       <div className="hero-body">
         <div className="hero-content">
-          <div className="hero-badge">
+          <div className="hero-badge reveal-top">
             <span className="pulse">🌟</span>
             Houston's trusted NEMT provider
           </div>
-          <h1>
+          <h1 className="reveal-left stagger-1">
             Safe, Comfortable &amp; <em>Compassionate</em> Rides — Every Time.
           </h1>
-          <p className="hero-sub">
+          <p className="hero-sub reveal-left stagger-2">
             You focus on your health. We'll get you there — door to door, on time, with the care and respect you deserve.
           </p>
-          <div className="hero-ctas">
+          <div className="hero-ctas reveal-bottom stagger-3">
             <a href="tel:+13464643384" className="btn btn-primary">
               <span className="btn-icon"><PhoneIcon /></span> Call to Book a Ride
             </a>
             <a href="#contact" className="btn btn-outline-white">Request a Callback</a>
           </div>
-          <div className="hero-trust">
+          <div className="hero-trust reveal-bottom stagger-4">
             <span><PinIcon />Houston, TX &amp; surrounding areas</span>
             <span><WheelchairIcon />Wheelchair-accessible fleet</span>
             <span><CheckIcon />On-time, every time</span>
           </div>
         </div>
 
-        <div className="hero-visual">
+        <div className="hero-visual reveal-right stagger-2">
           <div className="hero-photo-card">
             <span className="hero-photo-label">
               <span className="dot-live" />Serving Houston, TX
@@ -253,7 +273,7 @@ function Hero() {
             { num: 100, suffix: "%", label: "Professional drivers" },
             { raw: "2024", label: "Serving Houston since" },
           ].map((s, i) => (
-            <div className="hero-stat" key={i} style={{ animationDelay: `${0.2 + i * 0.1}s` }}>
+            <div className={`hero-stat reveal-bottom stagger-${i + 1}`} key={i}>
               <div className="snum">
                 {"raw" in s
                   ? s.raw
@@ -404,7 +424,7 @@ function Services() {
         </div>
         <div className="services-grid">
           {SERVICES.map((s, i) => (
-            <div className={`svc-card reveal stagger-${(i % 4) + 1}`} key={s.n}>
+            <div className={`svc-card ${['reveal-left', 'reveal-bottom', 'reveal-top', 'reveal-right'][i % 4]} stagger-${(i % 4) + 1}`} key={s.n}>
               <div className="svc-pic">
                 <span className="svc-num mono">{s.n}</span>
                 <img src={s.img} alt={s.alt} loading="lazy" />
@@ -433,7 +453,7 @@ function Values() {
         </div>
         <div className="values-grid">
           {VALUES.map((v, i) => (
-            <div className={`val-card reveal stagger-${i + 1}`} key={v.title}>
+            <div className={`val-card ${i % 2 === 0 ? 'reveal-bottom' : 'reveal-top'} stagger-${i + 1}`} key={v.title}>
               <div className="val-icon"><v.Icon /></div>
               <h3>{v.title}</h3>
               <p>{v.desc}</p>
@@ -449,7 +469,7 @@ function Values() {
 function CtaBanner() {
   return (
     <div className="cta-banner">
-      <div className="wrap cta-banner-inner">
+      <div className="wrap cta-banner-inner reveal-bottom">
         <span className="eyebrow eyebrow-light">Ready to Ride?</span>
         <h2>Experience transportation built on safety, comfort, and compassion.</h2>
         <p>Book today and see the PrimeCare difference.</p>
@@ -481,7 +501,7 @@ function Testimonials() {
         </div>
         <div className="testi-grid">
           {TESTIMONIALS.map((t, i) => (
-            <div className={`testi-card reveal stagger-${i + 1}`} key={t.name}>
+            <div className={`testi-card ${['reveal-left', 'reveal-bottom', 'reveal-right'][i % 3]} stagger-${i + 1}`} key={t.name}>
               <div className="testi-stars">★★★★★</div>
               <p className="testi-quote">"{t.quote}"</p>
               <div className="testi-author">
@@ -510,7 +530,7 @@ function Insights() {
         </div>
         <div className="insights-grid">
           {INSIGHTS.map((a, i) => (
-            <div className={`insight-card reveal stagger-${i + 1}`} key={a.title}>
+            <div className={`insight-card reveal-bottom stagger-${i + 1}`} key={a.title}>
               <div className="insight-pic">
                 <img src={a.img} alt={a.alt} loading="lazy" />
                 <span className="insight-tag">{a.tag}</span>
@@ -541,7 +561,7 @@ function FAQ() {
               <h2 style={{color:"var(--navy)"}}>Frequently Asked Questions</h2>
               <p>Everything you need to know about PrimeCare Medical Transport — before you book your first ride.</p>
             </div>
-            <div className="faq-list reveal stagger-1">
+            <div className="faq-list reveal-left stagger-1">
               {FAQS.map((f, i) => (
                 <div className="faq-item" key={f.q}>
                   <button className={`faq-q${open === i ? " open" : ""}`} aria-expanded={open === i} aria-controls={`faq-answer-${i}`} onClick={() => setOpen(open === i ? null : i)}>
@@ -553,7 +573,7 @@ function FAQ() {
             </div>
           </div>
 
-          <div className="faq-cta-box reveal stagger-2" id="contact">
+          <div className="faq-cta-box reveal-right stagger-2" id="contact">
             <span className="eyebrow eyebrow-light">Book Your Ride</span>
             <h3>Ready to schedule your trip?</h3>
             <p>Reach out and we'll get you set up quickly — whether it's a one-time ride or a recurring schedule.</p>
@@ -669,7 +689,7 @@ function CeoWords() {
 function Newsletter() {
   return (
     <div className="newsletter-band">
-      <div className="wrap newsletter-inner">
+      <div className="wrap newsletter-inner reveal-bottom">
         <div>
           <span className="eyebrow" style={{marginBottom:"8px"}}>Latest News &amp; Resources</span>
           <h3>Stay informed on medical transport</h3>
@@ -688,7 +708,7 @@ function Newsletter() {
 function FooterCta() {
   return (
     <div className="footer-cta">
-      <div className="wrap footer-cta-inner">
+      <div className="wrap footer-cta-inner reveal-top">
         <span className="eyebrow eyebrow-light">Every Journey Matters</span>
         <h2>Safety, Comfort, Compassion.<br/>Every Journey Matters.</h2>
         <p>Reliable Non-Emergency Medical Transportation You Can Trust in Houston, TX.</p>
@@ -708,7 +728,7 @@ function Footer() {
   return (
     <footer>
       <div className="wrap">
-        <div className="footer-inner">
+        <div className="footer-inner reveal-bottom">
           <div className="footer-brand">
             <img src={logoImg} alt="PrimeCare Medical Transport LLC" className="footer-logo" />
             <p>Safe. Reliable. Compassionate. Your Health Journey, Our Priority. Proudly serving Houston, Texas and surrounding communities.</p>
@@ -737,7 +757,7 @@ function Footer() {
             <div className="contact-item"><ClockIcon /><span>Mon–Fri: 5:00am–7:30pm<br/>Sat: 7:30am–6:30pm<br/>Sun: Closed</span></div>
           </div>
         </div>
-        <div className="footer-bottom">
+        <div className="footer-bottom reveal-bottom stagger-1">
           <div>© {new Date().getFullYear()} PrimeCare Medical Transport LLC. All rights reserved.</div>
           <div className="footer-bottom-links">
             <a href="#">Terms &amp; Conditions</a>
