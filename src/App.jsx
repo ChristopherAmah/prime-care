@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import logoImg from "@/imports/prime_logo_main.jpeg";
 import siennaImg from "@/imports/sienna_home.png";
 import heroImg from "@/imports/hero.png";
-import ceoImg from "@/imports/stella_ceo_image.png";
+import ceoImg from "@/imports/ceo.jpg";
+import hospitalClinicImg from "@/imports/hospitalclinic.jpg";
+import whoWeAreImg from "@/imports/whoweare.png";
 
 /* ── Icons ── */
 const PhoneIcon = () => <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="currentColor"/></svg>;
@@ -32,7 +34,7 @@ const SERVICES = [
   { n:"01", img:"https://images.unsplash.com/photo-1758691461935-202e2ef6b69f?w=700&h=480&fit=crop&auto=format", alt:"Doctor consulting with patient in exam room", title:"Medical Appointments", desc:"Door-to-door rides scheduled around your appointment time, not ours. No parking stress, no rushing." },
   { n:"02", img:"https://images.unsplash.com/photo-1783519890730-3436fd0bf965?w=700&h=480&fit=crop&auto=format", alt:"Medical dialysis treatment center", title:"Dialysis Transportation", desc:"Recurring routes built around your treatment schedule — always on time, always dependable." },
   { n:"03", img:"https://images.unsplash.com/photo-1732194439331-08ec61c4df4f?w=700&h=480&fit=crop&auto=format", alt:"Person in wheelchair next to accessible van", title:"Wheelchair Accessible Rides", desc:"ADA-compliant vehicles with lifts, ramps, and certified securement — handled with care and patience." },
-  { n:"04", img:"https://images.unsplash.com/photo-1517120026326-d87759a7b63b?w=700&h=480&fit=crop&auto=format", alt:"Hospital corridor medical professional", title:"Hospital & Clinic Transport", desc:"Coordinated with facility staff for a seamless transition from admission to discharge, every time." },
+  { n:"04", img:hospitalClinicImg, alt:"Passenger being assisted from a vehicle into a wheelchair", title:"Hospital & Clinic Transport", desc:"Coordinated with facility staff for a seamless transition from admission to discharge, every time." },
   { n:"05", img:"https://images.unsplash.com/photo-1706806594967-44e2b31f01d0?w=700&h=480&fit=crop&auto=format", alt:"Caregiver walking alongside patient", title:"Ambulatory Transportation", desc:"Steady, patient door-to-door help for those who walk but need a little extra support along the way." },
   { n:"06", img:"https://images.unsplash.com/photo-1559234938-b60fff04894d?w=700&h=480&fit=crop&auto=format", alt:"Senior being assisted walking outdoors", title:"Senior Transportation", desc:"We move at your pace — never rushing. Comfortable, dignified rides built around our seniors' needs." },
   { n:"07", img:"https://images.unsplash.com/photo-1540778339538-067eae485e9f?w=700&h=480&fit=crop&auto=format", alt:"Person in wheelchair outdoors", title:"Mobility-Needs Transport", desc:"Every requirement is different. We tailor each ride — from extra time to specialized equipment." },
@@ -236,7 +238,7 @@ function Hero() {
               <MailIcon /><span style={{fontSize:"0.71rem"}}>primecaremedt@outlook.com</span>
             </div>
             <div className="qc-row">
-              <ClockIcon /><span>Mon–Fri 5am–7:30pm</span>
+              <ClockIcon /><span>Mon–Fri 6am–7:00pm</span>
             </div>
           </div>
         </div>
@@ -293,8 +295,8 @@ function WhoWeAre() {
           <div className="who-photo-wrap reveal-left">
             <div className="who-photo">
               <img
-                src="https://images.unsplash.com/photo-1758653500534-a47f6cd8abb0?w=900&h=700&fit=crop&crop=center&auto=format"
-                alt="Medical staff transporting patient with compassionate care"
+                src={whoWeAreImg}
+                alt="PrimeCare team member beside a branded transport van outside a hospital"
                 loading="lazy"
               />
             </div>
@@ -575,8 +577,8 @@ function FAQ() {
             </div>
             <div className="faq-hours">
               <b>Service Hours</b>
-              Mon – Fri &nbsp;&nbsp;5:00am – 7:30pm<br />
-              Saturday &nbsp;&nbsp;7:30am – 6:30pm<br />
+              Mon – Fri &nbsp;&nbsp;6:00am – 7:00pm<br />
+              Saturday &nbsp;&nbsp;7:00am – 5:00pm<br />
               Sunday &nbsp;&nbsp;&nbsp;&nbsp;Closed
             </div>
             <a href="tel:+13464643384" className="btn btn-primary" style={{width:"100%",justifyContent:"center",marginTop:"20px"}}>
