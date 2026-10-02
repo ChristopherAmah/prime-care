@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import logoImg from "@/imports/prime_logo_main.jpeg";
 import siennaImg from "@/imports/sienna_home.png";
 import heroImg from "@/imports/hero.png";
-import ceoImg from "@/imports/ceo.jpg";
+import ceoImg from "@/imports/newceo.jpg";
 import hospitalClinicImg from "@/imports/hospitalclinic.jpg";
 import whoWeAreImg from "@/imports/whoweare.png";
 
@@ -625,13 +625,6 @@ function CeoWords() {
                 loading="lazy"
               />
             </div>
-            <div className="ceo-name-plate">
-              <div className="ceo-plate-icon"><AwardIcon /></div>
-              <div>
-                <div className="ceo-plate-name">Stella Ofodu</div>
-                <div className="ceo-plate-title">Founder &amp; CEO — PrimeCare Medical Transport LLC</div>
-              </div>
-            </div>
           </div>
 
           <div className="ceo-content reveal-right">
@@ -754,7 +747,7 @@ function Footer() {
             <div className="contact-item" style={{color:"#25d366"}}><WhatsAppIcon /><a href="https://wa.me/13464643384" target="_blank" rel="noopener noreferrer">WhatsApp Us</a></div>
             <div className="contact-item"><MailIcon /><a href="mailto:primecaremedt@outlook.com">primecaremedt@outlook.com</a></div>
             <div className="contact-item"><PinIcon /><span>Houston, Texas &amp; surrounding areas</span></div>
-            <div className="contact-item"><ClockIcon /><span>Mon–Fri: 5:00am–7:30pm<br/>Sat: 7:30am–6:30pm<br/>Sun: Closed</span></div>
+            <div className="contact-item"><ClockIcon /><span>Mon – Fri &nbsp;&nbsp;6:00am – 7:00pm<br/>Saturday &nbsp;&nbsp;7:00am – 5:00pm<br/>Sun: Closed</span></div>
           </div>
         </div>
         <div className="footer-bottom reveal-bottom stagger-1">
