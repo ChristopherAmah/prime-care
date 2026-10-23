@@ -757,7 +757,7 @@ function Footer() {
             <a href="#">Privacy Policy</a>
           </div>
           <div className="socials">
-            <a href="#" aria-label="Facebook">
+            <a href="https://www.facebook.com/profile.php?id=61595838325529" aria-label="Facebook">
               <svg viewBox="0 0 24 24" fill="none"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14V9.5c0-.3.2-.5.5-.5H14z" fill="currentColor"/></svg>
             </a>
             <a href="#" aria-label="Instagram">
